@@ -1,0 +1,25 @@
+{
+  "name": "Farfetch Challange",
+  "version": "1.0.0",
+  "authors": [
+    "Felipe Guerra <felipemartinsguerra@gmail.com>"
+  ],
+  "description": "frontend",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "fastclick": "~1.0.6",
+    "vue": "~1.0.11",
+    "underscore": "~3.3.5",
+    "bootstrap": "~3.3.7"
+  }
+}
