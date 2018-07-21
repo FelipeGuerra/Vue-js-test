@@ -1,0 +1,36 @@
+button {
+    appearance: none;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    background: white;
+    border: 1px solid black;
+    transition: all 0.1s;
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+    .fa {
+        font-size: 1em !important;
+        vertical-align: middle;
+    }
+    &:hover {
+        color: white;
+        background: black;
+    }
+}
+
+input {
+    display: inline-block;
+    appearance: none;
+    padding: 0.5em;
+    margin: 0.5em 0.5em 0.5em 0;
+    width: 50px;
+    background: white;
+    border: 1px solid black;
+    transition: all 0.1s;
+    font-size: 14px;
+}
+
+label {
+    font-size: 0.75em;
+    margin-right: 0.5em;
+}

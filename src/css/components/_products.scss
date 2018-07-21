@@ -1,0 +1,39 @@
+.product-list {
+    padding: 0 30px;
+    article {        
+        text-align: center;
+        padding: 10px;
+        .box-item{
+            background: #fff;
+            position: relative;
+            padding: 25px;
+            .product-image {
+                img {
+                    width: 100%;
+                }
+            }
+            h2 {
+                
+                font-size: 0.857em;
+            }
+            h3 {
+                margin: 10px 0;
+                font-weight: 800;
+                text-transform: uppercase;
+                font-size: 1em;
+            }
+            .price {
+                font-weight: 800;
+                span.list-price {
+                    text-decoration: line-through;
+                    margin-right: 10px;
+                }
+                span.best-price {
+                    &.promo {
+                        color: $highlight-color;
+                    }
+                }
+            }
+        }
+    }
+}

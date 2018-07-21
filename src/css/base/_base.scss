@@ -1,0 +1,33 @@
+body {
+    font: normal normal 14px/1.3em 'Lato', sans-serif;
+    background-color: $background-color;
+    @media only screen and (max-width: $screen-sm-max) {
+        font-size: 18px;
+    }
+}
+.disabled {
+    opacity: .5;
+}
+ul {
+    margin: 0;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.vert-bottom {
+    vertical-align: bottom;
+}
+
+.vert-middle {
+    vertical-align: middle;
+}

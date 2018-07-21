@@ -1,0 +1,25 @@
+.paginationBar {
+	clear: both;
+	margin: 40px 0 50px;
+	float: left;
+	width: 100%;
+    text-align: center;
+    li {
+        padding: 0 18px;
+        &.current {
+            a {
+            text-decoration: underline;
+            }
+        }
+        &.first::after {
+            content: "...";
+            text-decoration: none !important;
+            padding-left: 34px;
+        }
+        &.last::before {
+            content: "...";
+            text-decoration: none !important;
+            padding-right: 34px;
+        }
+    }
+}

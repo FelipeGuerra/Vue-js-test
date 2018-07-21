@@ -1,0 +1,49 @@
+.btn {
+    box-shadow: none !important;
+    &.btn-primary {
+        background-color: $btn-primary-color;
+        border-radius: 100px;
+        color: $link-color;
+        font-size: 1.3em;
+        margin-top: 25px;
+        padding: 13px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+        font-size: 0.929em;
+        &.active {
+            border-color: $btn-active-color;
+            background: $btn-active-color;
+        }
+        &:hover {
+            border-color: $btn-hover-color;
+            background: $btn-hover-color;
+            color: $white;
+        }
+    }
+    &.btn.btn-floater {
+        border: 1px solid $btn-active-color;
+        border-radius: 50%;
+        color: $btn-active-color;
+        height: 35px;
+        line-height: 0;
+        margin: 0;
+	    padding: 0;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 35px;
+        i {
+            font-size: 1.4em;
+        }
+        &:hover {
+            border-color: $btn-hover-color;
+            background: $btn-hover-color;
+            color: $white;
+        }
+        &.active {
+            border-color: $btn-hover-color;
+            color: $btn-hover-color;
+        }
+    }
+}

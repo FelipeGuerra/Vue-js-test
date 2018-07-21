@@ -1,0 +1,23 @@
+footer {
+    padding: 0 20px;
+    background-color: $white;
+    clear: both;
+    .footer-content {
+        margin: 22px 0;
+        @media only screen and (max-width: $screen-sm-max) {
+            text-align: center;
+        }
+    }
+    .copyright {
+        text-align: center;
+        padding: 20px 0;
+        opacity: .6;
+        font-size: 0.7em;
+        @media only screen and (min-width: $screen-md-min) {
+            text-align: right;
+        }
+        em {
+            color: $highlight-color;
+        }
+    }
+}

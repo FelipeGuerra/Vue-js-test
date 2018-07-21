@@ -1,0 +1,124 @@
+.cart-preview,
+.wishlist-preview {
+	position: absolute;
+	top: 100%;
+	z-index: 10;
+	width: 100%;
+	right: 0;
+	@media only screen and (min-width: $screen-md-min) {
+		width: auto;
+		right: 40px;
+	}
+	.panel {
+		border-radius: 0;
+		border: none;
+		padding: 0;
+		.panel-heading {
+			background: #444a59;
+			color: #fff;
+			border-radius: 0;
+			border: none;
+		}
+		.panel-body {
+			padding: 0;
+		}
+		.list-group-item {
+			border-radius: 0;
+			float: left;
+			width: 100%;
+			position: relative;
+			padding-right: 40px;
+			@media only screen and (min-width: $screen-md-min) {
+				float: none;
+				width: auto;
+				padding-right: 40px;
+			}
+			&:nth-child(odd) {
+				background: #f4f4f4;
+			}
+		}
+		.panel-footer {
+			background: #444a59;
+			color: #fff;
+			border-radius: 0;
+			border: none;
+		}
+	}
+	.product-image {
+		margin-right: 10px;
+		float: left;
+		@media only screen and (min-width: $screen-md-min) {
+			display: inline;
+			float: none;
+		}
+		img {
+			width: 50px;
+		}
+	}
+	.quantity,
+	.product-name,
+	.product-price {
+		display: inline;
+		margin-right: 10px;
+	}
+	.product-price {
+		font-weight: 800;
+		width: 50%;
+		display: inline-block;
+		margin-top: 15px;
+		@media only screen and (min-width: $screen-md-min) {
+			width: auto;
+			display: inline;
+			margin-top: 0;
+		}
+	}
+	.btn {
+		border-radius: 0;
+		width: 20px;
+	}
+	.quantity {		
+		float: left;
+		margin: 10px 0 0 60px;
+		clear: both;
+		@media only screen and (min-width: $screen-md-min) {
+			float: none;
+			margin: 0;
+		}
+		.btn {
+			width: 35px;
+			height: 35px;
+			font-size: 23px;
+			line-height: 15px;
+			border-radius: 50%;
+			@media only screen and (min-width: $screen-md-min) {
+				width: 20px;
+				height: 20px;
+				font-size: 1em;
+				line-height: 1em;
+			}
+		}
+	}
+	.remove-product {
+		display: inline;
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		z-index: 100;
+		button {
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			line-height: 0;
+			color: $white;
+			background: $first-color;
+			border: none;			
+			@media only screen and (min-width: $screen-md-min) {
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+	.cart-final-price {
+		font-weight: 800;
+	}
+}

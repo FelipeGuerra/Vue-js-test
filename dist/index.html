@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>All the Products - BRAND</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <meta name="description" content="All the products from BRAND">
+    <meta name="keywords" content="brand, brand.com, designer clothes, fashion">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1, user-scalable=0" name="viewport">
+    <meta content="width" name="MobileOptimized">
+    <meta content="true" name="HandheldFriendly">
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/main.min.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+    <div class="main-wrapper">
+        <div id="vue">
+            <header>
+                <div class="container-fluid">
+                    <h1 class="logo col-xs-offset-3 col-sm-offset-0 col-xs-6 col-md-2 col-lg-1">
+                        <a href="/">
+                            <img src="img/brand.png" alt="">
+                        </a>
+                    </h1>
+
+                    <div class="cart-and-wishlist col-xs-12 col-md-2 pull-right text-right" style="display:block">
+                        <div class="cart-details" @click="showCart = !showCart, showWishlist=false">
+                            <div class="cart-price"><span v-text="total | currency '£'"></span></div>
+                            <i class="ff-icon-bag item-counter">
+                                <span class="cart-items" v-text="count"></span>
+                            </i>
+                        </div>
+
+                        <div class="wishlist-details" @click="showWishlist = !showWishlist, showCart=false">
+                            <i class="ff-icon-wishlist item-counter">
+                                <span class="wishlist-items" v-text="wishlist_count"></span>
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="cart-preview" v-show="showCart" style="display:none">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b v-show="count">In Your Cart</b>
+                                <span v-show="!count" class="text-muted">Cart empty</span>
+                            </div>
+                            <div class="panel-body">
+                                <li v-for="item in cart_items" class="list-group-item">
+                                    <div class="product-image">
+                                        <img v-bind:src="item.image" v-bind:alt="item.name" itemprop="image">
+                                    </div>
+                                    <div class="product-name">{{ item.name }}</div>
+                                    <div class="product-price">{{ item.price | currency "£" }}</div>
+                                    <div class="quantity">
+                                        <button v-on:click="decQty(item)" class="btn btn-xs btn-default">-</button>
+                                        <span class="total">{{ item.qty }}&times;</span>
+                                        <button v-on:click="addQty(item)" class="btn btn-xs btn-default">+</button>
+                                    </div>
+                                    <div class="remove-product pull-right">
+                                        <button v-on:click="remProd(item)" class="btn btn-xs btn-default">&times;</button>
+                                    </div>
+                                </li>
+                            </div>
+                            <div class="panel-footer" v-show="count">
+                                <span>Cart Subtotal:</span>
+                                <span class="cart-final-price pull-right" v-text="total | currency '£'"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wishlist-preview" v-show="showWishlist" style="display:none">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b v-show="count">In Your Wishlist</b>
+                                <span v-show="!count" class="text-muted">Wishlist empty</span>
+                            </div>
+                            <div class="panel-body">
+                                <li v-for="item in wishlist_items" class="list-group-item">
+                                    <div class="product-image">
+                                        <img v-bind:src="item.image" v-bind:alt="item.name" itemprop="image">
+                                    </div>
+                                    <div class="product-name">{{ item.name }}</div>
+                                    <div class="product-price">{{ item.price | currency "£" }}</div>
+                                    <div class="remove-product pull-right">
+                                        <button v-on:click="remProdWishlist(item)" class="btn btn-xs btn-default">&times;</button>
+                                    </div>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <ol class="breadcrumb" itemprop="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">All Products</a></li>
+                <li class="active">Data</li>
+            </ol>
+
+            <section class="product-list">
+                <article v-for="product in products | paginate" class="product col-xs-12 col-sm-6 col-md-3" itemscope itemtype="http://schema.org/Product">
+                    <div class="box-item">
+                        <div class="product-image">
+                            <img v-bind:src="product.image" v-bind:alt="product.name" itemprop="image">
+                        </div>
+                        <h3 class="brand" itemprop="brand">{{ product.brand }}</h3>
+                        <h2 class="name" itemprop="name">{{ product.name }}</h2>
+                        <div class="price">
+                            <span class="list-price" itemprop="old-price" v-if="product.list_price > product.price">{{ product.list_price | currency '£' }}</span>
+                            <span class="best-price" :class="{promo: product.list_price > product.price}" itemprop="price">{{ product.price | currency '£' }}</span>
+                        </div>
+                        <div class="add-to-cart">
+                            <button v-show="notInCart(product)" v-on:click=" addToCart(product)" class="btn btn-primary">Add to Cart</button>
+                            <button v-show="!notInCart(product)" class="btn btn-primary active">In Cart</button>
+                        </div>
+                        <div class="add-to-wishlist">
+                            <button v-show="notInWishlist(product)" v-on:click=" addToWishlist(product)" class="btn btn-floater"><i class="ff-icon-wishlist"></i></button>
+                            <button v-show="!notInWishlist(product)" class="btn btn-floater active"><i class="ff-icon-wishlist"></i></button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <div class="paginationBar">
+                <ul class="list-inline">
+                    <li class="prev">
+                        <a v-if="currentPage > 0" href="#" @click.prevent="setPage(currentPage-1)"><i class="ff-icon-arrow-left"></i></a>
+                        <a v-if="currentPage === 0" @click.prevent href="#" class="disabled"><i class="ff-icon-arrow-left"></i></a>
+                    </li>
+                    <li v-for="pageNumber in totalPages" v-if="Math.abs(pageNumber - currentPage) < 3 || pageNumber == totalPages - 1 || pageNumber == 0" :class="{current: currentPage === pageNumber, last: (pageNumber == totalPages - 1 && Math.abs(pageNumber - currentPage) > 3), first:(pageNumber == 0 && Math.abs(pageNumber - currentPage) > 3)}">
+                        <a href="#" @click.prevent="setPage(pageNumber)">{{ pageNumber+1 }}</a>
+                    </li>
+                    <li class="next">
+                        <a v-if="currentPage < totalPages-1" href="#" @click.prevent="setPage(currentPage+1)"><i class="ff-icon-arrow-right"></i></a>
+                        <a v-if="currentPage === totalPages-1" @click.prevent href="#" class="disabled"><i class="ff-icon-arrow-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container-fluid">
+                <div class="footer-content col-xs-12 col-md-6">
+                    FOOTER
+                </div>
+                <div class="copyright col-xs-12 col-md-6">
+                    made with <em>&hearts;</em> by <a href="http://www.lefipe.com.br">Felipe Guerra</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- inject:js -->
+    <script src="js/vendor.min.js"></script>
+    <!-- endinject -->
+    <script src="js/main.min.js"></script>
+
+</body>
+
+</html>

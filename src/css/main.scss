@@ -1,0 +1,17 @@
+@import "base/variables";
+@import "base/colors";
+@import "base/fonts";
+@import "base/elements";
+
+@import "bootstrap/bootstrap";
+@import "base/base";
+
+@import "components/header";
+@import "components/footer";
+@import "components/minicart";
+@import "components/breadcrumb";
+@import "components/products";
+@import "components/pager";
+@import "components/buttons";
+
+@import "templates/index";

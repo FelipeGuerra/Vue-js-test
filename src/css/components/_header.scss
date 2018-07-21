@@ -1,0 +1,73 @@
+header {
+    background-color: $white;
+    // padding-bottom: 18px;
+    margin-bottom: 40px;
+    .container-fluid {
+        position: relative;
+    }
+    .logo {
+        padding: 18px 20px;
+        margin: 0;
+        line-height: 0;
+        img {
+            width: 100%;
+        }
+    }
+    .cart-and-wishlist {
+        text-align: center;
+        padding: 20px 0;
+        @media only screen and (min-width: $screen-md-min) {
+            text-align: right;
+            padding: 18px 40px;
+        }
+        >div {
+            display: inline-block;
+            font-size: 0.857em;
+            cursor: pointer;
+        }
+        .cart-details {
+            .cart-price {
+                display: inline;
+                margin-right: 10px;
+            }
+        }
+        .item-counter {
+            position: relative;
+            @media only screen and (min-width: $screen-md-min) {
+                font-size: 17px;
+                padding-right: 15px;
+            }
+            span {
+                background: $thirth-color;
+                color: $white;
+                padding: 2px 5px;
+                text-align: center;
+                border-radius: 5px;
+                display: inline-block;
+                margin-left: 5px;
+                font-family: 'Lato', sans-serif;
+                &:after {
+                    content: ' items';
+                }
+                @media only screen and (min-width: $screen-md-min) {
+                    position: absolute;
+                    top: -8px;
+	                right: -15px;
+                    border-radius: 50%;
+                    background: $thirth-color;
+                    color: $white;
+                    width: 15px;
+                    height: 15px;
+                    line-height: 12px;
+	                font-size: 8px;
+                    &:after {
+                        content: '';
+                    }
+                }
+            }
+        }
+        .wishlist-details {
+            margin-left: 10px;
+        }
+    }
+}
